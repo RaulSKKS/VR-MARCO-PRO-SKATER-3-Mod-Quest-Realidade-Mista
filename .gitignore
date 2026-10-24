@@ -1,0 +1,5 @@
+# A ISO e tudo o que sai dela ficam so no PC de quem joga.
+*.iso
+COLOQUE-SUA-ISO-AQUI/*
+!COLOQUE-SUA-ISO-AQUI/LEIA.txt
+_trabalho/

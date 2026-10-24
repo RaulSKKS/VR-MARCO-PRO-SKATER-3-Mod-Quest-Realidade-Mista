@@ -1,0 +1,21 @@
+Skate 3 AR no Quest — instalacao em tres passos
+
+O APK nao traz mapas nem o skatista. O disco de Xbox 360 e convertido neste PC
+e o resultado e enviado ao oculos.
+
+1. O APK fica na pasta apk\
+   O Quest precisa estar em modo desenvolvedor.
+   O 2-Enviar-Quest.bat instala esse APK pelo cabo.
+   SideQuest tambem aceita arrastar o arquivo, se preferir.
+
+2. Converta o jogo (uma vez neste PC)
+   Clique duas vezes em 1-Converter.bat
+   Ele usa a pasta ja extraida e nao pede o ISO.
+   Pode fechar quando aparecer "Setup complete". Nao precisa jogar no PC.
+
+3. Envie ao oculos
+   Quest ligado, cabo USB, depuracao USB aceita no visor.
+   Clique duas vezes em 2-Enviar-Quest.bat
+   Esse passo instala o APK e manda os mapas juntos.
+   O som do skatista ja esta dentro do APK.
+   Abra "Skate 3 AR" na biblioteca, em fontes desconhecidas.

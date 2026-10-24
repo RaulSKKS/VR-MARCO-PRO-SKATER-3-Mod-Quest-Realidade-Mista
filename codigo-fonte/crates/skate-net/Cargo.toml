@@ -1,0 +1,22 @@
+[package]
+name = "skate-net"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+blake3 = "=1.8.7"
+half = "=2.7.1"
+socket2 = "0.6"
+# online rooms: the matchmaking Worker over HTTPS (rustls with bundled roots: no system TLS on the Quest),
+# STUN/TURN message integrity and fingerprints
+ureq = { version = "2.12", default-features = false, features = ["tls"] }
+hmac = "0.12"
+sha1 = "0.10"
+md-5 = "0.10"
+crc32fast = "1.5"
+
+[dev-dependencies]
+skate-core.workspace = true

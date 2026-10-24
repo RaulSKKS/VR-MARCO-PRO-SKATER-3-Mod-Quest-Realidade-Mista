@@ -1,0 +1,3 @@
+Coloque aqui a ISO do SEU Skate 3 de Xbox 360 (arquivo .iso).
+Uma pasta com o disco ja extraido (com o default.xex dentro) tambem serve.
+A ISO e os dados convertidos ficam so no seu PC: eles nao vao para o git.
