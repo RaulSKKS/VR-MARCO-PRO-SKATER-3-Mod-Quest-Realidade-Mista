@@ -2,4 +2,6 @@
 *.iso
 COLOQUE-SUA-ISO-AQUI/*
 !COLOQUE-SUA-ISO-AQUI/LEIA.txt
-_trabalho/
+_trabalho/*
+# O extrator de ISO (XboxDev/extract-xiso, com a licenca dele) vai junto com o kit.
+!_trabalho/extract-xiso/
