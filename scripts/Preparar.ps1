@@ -1,11 +1,13 @@
 # Passo 1: prepara o jogo a partir da SUA ISO do Skate 3 (Xbox 360). Extrai o disco e converte mapas e skatista
-# para o formato do Skate 3 AR. Tudo fica em _trabalho\ e nada disso vai para o git. Chamado por 1-PREPARAR-JOGO.bat.
+# para o formato do VR MARCO PRO SKATER. Tudo fica em _trabalho\ e nada disso vai para o git (so o extrator de ISO,
+# que ja vem no kit em _trabalho\extract-xiso). Chamado por 1-PREPARAR-JOGO.bat.
 . "$PSScriptRoot\Comum.ps1"
 
 # O conversor publicado pelo projeto Skate 3 AR (andrewnakas/skate3-quest-ar), conferido pelo hash.
 $ConverterUrl = 'https://github.com/andrewnakas/skate3-quest-ar/releases/download/v0.0.2-alpha/skate3rust-windows-x64.zip'
 $ConverterSha = 'cf2efade20832f560f2e53d1d9de0f85db85869a967ce4cfb61eccdb1bbe3f09'
-# O extrator de ISO de Xbox que o proprio conversor usa (XboxDev/extract-xiso), mesma versao e hash.
+# O extrator de ISO de Xbox que o proprio conversor usa (XboxDev/extract-xiso), mesma versao e hash. Ja vem no kit;
+# so e baixado se a copia do kit sumir.
 $XisoUrl = 'https://github.com/XboxDev/extract-xiso/releases/download/build-202505152050/extract-xiso-Win64_Release.zip'
 $XisoSha = 'fec88d03c7efd6205ab09be4abba70c0afd0eb27a5709f0a6235b828ba5ac11e'
 
@@ -53,10 +55,13 @@ if (-not $given) {
         Write-Host 'O disco ja foi extraido antes.'
     } else {
         Step 'Extraindo a ISO (alguns minutos)...'
-        $zip = Save-Download $XisoUrl 'extract-xiso.zip' $XisoSha
         $tools = Join-Path $Work 'extract-xiso'
-        if (-not (Test-Path -LiteralPath $tools)) { Expand-Archive -LiteralPath $zip -DestinationPath $tools }
-        $xiso = Get-ChildItem -LiteralPath $tools -Recurse -Filter extract-xiso.exe | Select-Object -First 1
+        $xiso = Get-ChildItem -LiteralPath $tools -Recurse -Filter extract-xiso.exe -ErrorAction SilentlyContinue | Select-Object -First 1
+        if (-not $xiso) {
+            $zip = Save-Download $XisoUrl 'extract-xiso.zip' $XisoSha
+            Expand-Archive -LiteralPath $zip -DestinationPath $tools -Force
+            $xiso = Get-ChildItem -LiteralPath $tools -Recurse -Filter extract-xiso.exe | Select-Object -First 1
+        }
         if (-not $xiso) { throw 'O extrator de ISO veio incompleto.' }
         # O extrator se perde com espacos no caminho: ele trabalha dentro de _trabalho com nomes curtos.
         $link = Join-Path $Work 'skate3.iso'
@@ -67,7 +72,12 @@ if (-not $given) {
             Write-Host 'Copiando a ISO para _trabalho (outro disco)...'
             Copy-Item -LiteralPath $iso.FullName -Destination $link
         }
-        if (Test-Path -LiteralPath $disc) { Remove-Item -LiteralPath $disc -Recurse -Force }
+        # Algumas versoes do extrator ignoram o -d e criam a pasta skate3 (nome da ISO). Se uma tentativa anterior
+        # parou no meio, essa pasta sobra e ele recusa extrair ("Unable to create directory skate3: File exists").
+        $leftover = Join-Path $Work 'skate3'
+        foreach ($old in @($disc, $leftover)) {
+            if (Test-Path -LiteralPath $old) { Remove-Item -LiteralPath $old -Recurse -Force }
+        }
         Push-Location $Work
         try {
             & $xiso.FullName -x 'skate3.iso' -d 'disco'
@@ -76,7 +86,14 @@ if (-not $given) {
             Pop-Location
             Remove-Item -LiteralPath $link -Force -ErrorAction SilentlyContinue
         }
-        if ($code -ne 0 -or -not (Test-Disc $disc)) {
+        if (-not (Test-Disc $disc)) {
+            $other = @((Join-Path $disc 'skate3'), $leftover) | Where-Object { Test-Disc $_ } | Select-Object -First 1
+            if ($other) { $disc = $other }
+        }
+        if (-not (Test-Disc $disc)) {
+            if ($code -ne 0) {
+                throw 'O extrator nao conseguiu extrair a ISO (o motivo esta nas linhas em ingles acima). Confira se a ISO baixou inteira (o Skate 3 tem cerca de 7 GB) e se ha espaco livre no disco, e rode de novo.'
+            }
             throw 'Essa ISO nao parece ser o Skate 3 de Xbox 360 (faltam arquivos do jogo depois de extrair).'
         }
     }

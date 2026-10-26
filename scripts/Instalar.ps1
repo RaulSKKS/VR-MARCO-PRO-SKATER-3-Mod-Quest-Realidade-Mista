@@ -1,4 +1,4 @@
-# Passo 2: instala o Skate 3 AR (Marco VR) no Quest e envia os dados do jogo preparados no passo 1.
+# Passo 2: instala o VR MARCO PRO SKATER no Quest e envia os dados do jogo preparados no passo 1.
 # Chamado por 2-INSTALAR-NO-QUEST.bat.
 . "$PSScriptRoot\Comum.ps1"
 
@@ -31,5 +31,5 @@ Step 'Descompactando no Quest...'
 if ($LASTEXITCODE -ne 0) { throw 'O Quest nao gravou os dados do jogo.' }
 
 Step 'Pronto!'
-Write-Host 'No Quest: Biblioteca > Fontes desconhecidas > "Skate 3 AR".'
+Write-Host 'No Quest: Biblioteca > Fontes desconhecidas > "VR MARCO PRO SKATER".'
 Write-Host 'A versao aparece no canto de cima do menu (botao MENU do controle esquerdo).'
