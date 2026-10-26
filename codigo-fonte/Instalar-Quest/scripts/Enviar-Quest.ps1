@@ -53,4 +53,4 @@ if ($banks.Count -gt 0) {
     }
 }
 $global:LASTEXITCODE = 0
-Write-Host 'Pronto. Abra Skate 3 AR no Quest, em fontes desconhecidas.'
+Write-Host 'Pronto. Abra VR MARCO PRO SKATER no Quest, em fontes desconhecidas.'

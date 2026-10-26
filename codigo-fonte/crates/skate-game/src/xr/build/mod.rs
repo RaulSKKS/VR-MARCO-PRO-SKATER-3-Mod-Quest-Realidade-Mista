@@ -61,8 +61,8 @@ const SIZE_STEP: f32 = 0.05;
 /// World scale change per second at full stick deflection (multiplicative).
 const SCALE_RATE: f32 = 1.0;
 /// Game metres per real metre: 1 would be life size, 60 is a tiny toy. Near life size the game froze (the skater
-/// towering over the room), so the biggest it gets is a park about 3.4 m across with an 18 cm skater.
-pub(crate) const MIN_SCALE: f32 = 10.0;
+/// towering over the room); the limit is now life size again for testing on the Quest.
+pub(crate) const MIN_SCALE: f32 = 1.0;
 pub(crate) const MAX_SCALE: f32 = 60.0;
 const STICK_DEADZONE: f32 = 0.25;
 const UNDO_DEPTH: usize = 40;

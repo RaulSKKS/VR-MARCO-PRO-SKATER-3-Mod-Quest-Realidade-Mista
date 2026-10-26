@@ -22,6 +22,7 @@ mod tv;
 mod mesh_planes;
 mod plane_view;
 mod planes;
+mod quality;
 mod real_world;
 pub(crate) mod rig;
 mod spatial_audio;
@@ -61,7 +62,7 @@ pub(crate) fn plugins(base: PluginGroupBuilder) -> PluginGroupBuilder {
     add_xr_plugins(base)
         .set(OxrInitPlugin {
             app_info: AppInfo {
-                name: "Skate 3 AR".into(),
+                name: "VR MARCO PRO SKATER".into(),
                 ..AppInfo::BEVY
             },
             exts,
@@ -100,6 +101,7 @@ impl Plugin for XrPlugin {
                 tv::TvPlugin,
                 plane_view::PlaneViewPlugin,
                 spatial_audio::SpatialAudioPlugin,
+                quality::QualityPlugin,
             ))
             // The world plugin sets an opaque clear colour at build time;
             // passthrough needs alpha 0 wherever nothing was drawn.

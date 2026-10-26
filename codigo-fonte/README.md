@@ -1,6 +1,6 @@
-# Skate 3 AR — Marco VR
+# VR MARCO PRO SKATER
 
-Código completo do Skate 3 AR na versão do canal **VR Tutoriais Marco Pereira**, para Meta Quest 3 (realidade
+Código completo do VR MARCO PRO SKATER na versão do canal **VR Tutoriais Marco Pereira**, para Meta Quest 3 (realidade
 mista) e PC. A versão atual está em `crates/skate-game/src/version.rs` e aparece no menu do jogo.
 
 > Os arquivos do Skate 3 não estão neste repositório. Cada jogador converte o próprio disco (ISO de Xbox 360);
@@ -22,7 +22,8 @@ mista) e PC. A versão atual está em `crates/skate-game/src/version.rs` e apare
   - o host manda na pista e os convidados espelham; as posições viajam relativas à pista (`xr/build/sync.rs`,
     `SharedFrame` em `multiplayer.rs`);
   - roupa do Marco e pontuação de cada um sincronizadas, com ranking no telão.
-- Limite de tamanho da pista (o jogo travava perto do tamanho real) e versão visível nos menus.
+- Tamanho do skatista até o de uma pessoa real, com qualidade de imagem (MSAA) que baixa sozinha quando ele fica
+  grande e log `XR PERF` de fps por tamanho (`xr/quality.rs`); versão visível nos menus.
 
 ## Compilar
 

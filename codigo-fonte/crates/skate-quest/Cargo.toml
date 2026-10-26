@@ -95,7 +95,7 @@ name = "org.khronos.openxr"
 actions = ["org.khronos.openxr.OpenXRRuntimeService"]
 
 [package.metadata.android.application]
-label = "Skate 3 AR"
+label = "VR MARCO PRO SKATER"
 debuggable = true
 theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen"
 

@@ -1,4 +1,4 @@
-Skate 3 AR no Quest — instalacao em tres passos
+VR MARCO PRO SKATER no Quest — instalacao em tres passos
 
 O APK nao traz mapas nem o skatista. O disco de Xbox 360 e convertido neste PC
 e o resultado e enviado ao oculos.
@@ -18,4 +18,4 @@ e o resultado e enviado ao oculos.
    Clique duas vezes em 2-Enviar-Quest.bat
    Esse passo instala o APK e manda os mapas juntos.
    O som do skatista ja esta dentro do APK.
-   Abra "Skate 3 AR" na biblioteca, em fontes desconhecidas.
+   Abra "VR MARCO PRO SKATER" na biblioteca, em fontes desconhecidas.

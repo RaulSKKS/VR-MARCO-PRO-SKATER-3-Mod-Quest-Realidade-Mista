@@ -1,7 +1,7 @@
 @echo off
 cd /d "%~dp0"
-title Skate 3 AR - Marco VR - Passo 1: preparar o jogo
-echo Skate 3 AR (Marco VR) - passo 1: preparar o jogo a partir da sua ISO
+title VR MARCO PRO SKATER - Passo 1: preparar o jogo
+echo VR MARCO PRO SKATER - passo 1: preparar o jogo a partir da sua ISO
 echo.
 echo Antes: coloque a ISO do Skate 3 (Xbox 360) na pasta COLOQUE-SUA-ISO-AQUI.
 echo Precisa de internet na primeira vez (baixa o conversor e o extrator).
